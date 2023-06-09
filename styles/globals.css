@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.icon img {
+    height: 102px !important;
+}
+
+.mui-style-bhp9pd-MuiPaper-root-MuiCard-root {
+
+    border-radius: 4rem 4rem 0 0;
+    height: 100%;
+}
