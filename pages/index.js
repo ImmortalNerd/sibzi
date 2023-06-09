@@ -19,8 +19,8 @@ export default function Home() {
         </div>
       </div>
     </div>
-    <div className='container'>
-      <div className='flex mt-16 justify-center'>
+    <div className='container m-0'>
+      <div className='flex mt-16 justify-center h-screen'>
           <SignUp />
       </div>
     </div> 
