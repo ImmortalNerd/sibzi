@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    color: black;
+    margin: 0;
+}
+
 .icon img {
     height: 102px !important;
 }
 
-.mui-style-tjaq38-MuiPaper-root-MuiCard-root {
-    border-radius: 2rem 2rem 0 0;
-    height: 100%;
-    padding: 0 1.5rem;
+.signup-btn {
+    background-color: #FDD05D;
+}
+
+.container {
+    max-width:unset;
+}
+.form {
+    max-width: 400px;
 }
