@@ -4,15 +4,17 @@ import styles from "./signup.module.css";
 import { Button, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import Link from "next/link";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import AppleIcon from "@mui/icons-material/Apple";
+import Link from "@mui/material/Link";
 
 const CssTextField = styled(TextField)({
   "& .MuiInputBase-root": {
     border: "none",
     borderRadius: "12px",
+    height: "48px",
+    width: "296px",
   },
   "& .MuiFilledInput-root::before": {
     border: "none",
@@ -59,14 +61,23 @@ export default function SignUp({ setShowSignIn }) {
           disableUnderline: true,
         }}
       />
-      <Button size="small" color="secondary">
-        <Link href="#">Forgot Password?</Link>
-      </Button>
+      <Link
+        href="#"
+        underline="none"
+        className="text-center text-sm"
+        sx={{ color: "secondary.main" }}
+      >
+        Forgot Password?
+      </Link>
       <Button className="signup-btn" variant="contained" color="primary">
         Sign In
       </Button>
       <p className="text-center">Or</p>
-      <Stack className="justify-center" direction="row" spacing={2}>
+      <Stack
+        className="justify-center items-center"
+        direction="row"
+        spacing={2}
+      >
         <Link href="#" className={styles.icons}>
           <GoogleIcon />
         </Link>
@@ -79,7 +90,12 @@ export default function SignUp({ setShowSignIn }) {
       </Stack>
       <p className="text-center mt-auto">
         Already have an account?
-        <Button size="small" color="secondary">
+        <Link
+          href="#"
+          underline="none"
+          className="text-center text-sm"
+          sx={{ color: "secondary.main" }}
+        >
           <span
             onClick={() => {
               setShowSignIn(true);
@@ -87,7 +103,7 @@ export default function SignUp({ setShowSignIn }) {
           >
             Sign In
           </span>
-        </Button>
+        </Link>
       </p>
     </form>
   );

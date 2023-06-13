@@ -4,7 +4,7 @@ import styles from "./signup.module.css";
 import { Button, CardActionArea, CardActions, TextField } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import Link from "next/link";
+import Link from "@mui/material/Link";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import AppleIcon from "@mui/icons-material/Apple";
@@ -13,6 +13,8 @@ const CssTextField = styled(TextField)({
   "& .MuiInputBase-root": {
     border: "none",
     borderRadius: "12px",
+    height: "48px",
+    width: "296px",
   },
   "& .MuiFilledInput-root::before": {
     border: "none",
@@ -51,9 +53,14 @@ export default function SignIn({ setShowSignIn }) {
           disableUnderline: true,
         }}
       />
-      <Button size="small" color="secondary">
-        <Link href="#">Forgot Password?</Link>
-      </Button>
+      <Link
+        href="#"
+        underline="none"
+        className="text-center text-sm"
+        sx={{ color: "secondary.main" }}
+      >
+        Forgot Password?
+      </Link>
       <Button className="signup-btn" variant="contained" color="primary">
         Sign In
       </Button>
@@ -71,7 +78,12 @@ export default function SignIn({ setShowSignIn }) {
       </Stack>
       <p className="text-center mt-auto">
         Dont have an account?
-        <Button size="small" color="secondary">
+        <Link
+          href="#"
+          underline="none"
+          className="text-center text-sm"
+          sx={{ color: "secondary.main" }}
+        >
           <span
             onClick={() => {
               setShowSignIn(false);
@@ -79,7 +91,7 @@ export default function SignIn({ setShowSignIn }) {
           >
             Sign Up
           </span>
-        </Button>
+        </Link>
       </p>
     </form>
   );

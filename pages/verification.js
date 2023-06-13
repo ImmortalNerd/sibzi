@@ -4,8 +4,9 @@ import styles from "./verification.module.css";
 import { TextField, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
-import Link from "next/link";
+import Link from "@mui/material/Link";
 import Button, { ButtonProps } from "@mui/material/Button";
+import Image from "next/image";
 
 const CssTextField = styled(TextField)({
   "& .MuiInputBase-root": {
@@ -42,8 +43,8 @@ export default function SignUp({ setShowSignIn }) {
 
   return (
     <div className="container flex flex-col	justify-end items-center h-screen">
-      <div className="w-full md:w-fit mb-0 h-4/5">
-        <form className={`${styles.signup} p-8 mb-0 h-max gap-4`}>
+      <div className="w-full md:w-fit mb-0">
+        <form className={`${styles.signup} p-8 mb-0 gap-4`}>
           <Typography
             gutterBottom
             variant="h5"
@@ -81,19 +82,64 @@ export default function SignUp({ setShowSignIn }) {
             Remaining time: 1:15
           </Typography>
           <Button variant="contained">Next</Button>
-          <div className="container flex w-52 justify-centeritems-center">
-            <div className="flex col-3 text-center">
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>
-              <div>4</div>
-              <div>5</div>
-              <div>6</div>
-              <div>7</div>
-              <div>8</div>
-              <div>9</div>
-              <div>0</div>
-              <div>*</div>
+          <div className="container flex w-52 justify-center items-center m-auto">
+            <div className="grid-container grid grid-cols-3 text-center gap-y-4 gap-x-16">
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                1
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                2
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                3
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                4
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                5
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                6
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                7
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                8
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                9
+              </Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              ></Typography>
+              <Typography
+                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
+              >
+                0
+              </Typography>
+              <div>
+                <Image src="/clear.png" alt="..." width={20.82} height={18} hidden={false}/>
+              </div>
             </div>
           </div>
         </form>

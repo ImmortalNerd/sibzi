@@ -31,7 +31,7 @@ export default function Home() {
           </div>
         </div>
         <Slide direction="up" in={checked} mountOnEnter unmountOnExit>
-          <div className="grow w-full md:w-fit mb-0 mt-16">
+          <div className="grow w-full md:w-fit mb-0 mt-16 h-fit">
             {showSignIn ? (
               <SignIn setShowSignIn={setShowSignIn} />
             ) : (

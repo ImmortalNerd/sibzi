@@ -11,10 +11,6 @@ body {
     height: 102px !important;
 }
 
-.signup-btn {
-    background-color: #FDD05D;
-}
-
 .container {
     max-width:unset;
 }

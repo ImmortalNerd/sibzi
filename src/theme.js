@@ -35,6 +35,7 @@ const theme = createTheme({
     },
     disabled: {
       main: "#979797",
+      dark: "#9A9696",
     },
   },
   typography: {
