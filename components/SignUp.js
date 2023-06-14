@@ -8,6 +8,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import AppleIcon from "@mui/icons-material/Apple";
 import Link from "@mui/material/Link";
+import { useState } from "react";
 
 const CssTextField = styled(TextField)({
   "& .MuiInputBase-root": {
@@ -24,7 +25,23 @@ const CssTextField = styled(TextField)({
   },
 });
 
+const register = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/auth/register", {
+      method: "POST",
+      body: JSON.stringify({
+        title: "My post title",
+        body: "My post content.",
+      }),
+    });
+    const data = response.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+};
 export default function SignUp({ setShowSignIn }) {
+  const [user, setUser] = useState({});
   return (
     <form className={`${styles.signup} p-8 mb-0 h-max gap-2`}>
       <Typography
@@ -69,8 +86,8 @@ export default function SignUp({ setShowSignIn }) {
       >
         Forgot Password?
       </Link>
-      <Button className="signup-btn" variant="contained" color="primary">
-        Sign In
+      <Button variant="contained" color="primary" sx={{ borderRadius: "12px" }}>
+        Sign Up
       </Button>
       <p className="text-center">Or</p>
       <Stack
@@ -89,7 +106,7 @@ export default function SignUp({ setShowSignIn }) {
         </Link>
       </Stack>
       <p className="text-center mt-auto">
-        Already have an account?
+        Already have an account? &nbsp;
         <Link
           href="#"
           underline="none"

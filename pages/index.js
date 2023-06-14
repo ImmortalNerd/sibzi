@@ -1,13 +1,15 @@
 import Image from "next/image";
-import { Button } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import styles from "./home.module.css";
 import SignUp from "@/components/SignUp";
 import SignIn from "@/components/SignIn";
 import { useState, useEffect } from "react";
 import Slide from "@mui/material/Slide";
-import Switch from "@mui/material/Switch";
-import FormControlLabel from "@mui/material/FormControlLabel";
+
+// if SignIn POST http://localhost:3000/auth/login
+// if SignUp POST http://localhost:3000/auth/register
+
+// if  GET http://localhost:3000/auth/token
+// if  POST http://localhost:3000/auth/verification
 
 export default function Home() {
   const [showSignIn, setShowSignIn] = useState(false);

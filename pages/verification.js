@@ -1,12 +1,14 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import styles from "./verification.module.css";
-import { TextField, useTheme } from "@mui/material";
+import { Box, TextField, useTheme } from "@mui/material";
 import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import Link from "@mui/material/Link";
 import Button, { ButtonProps } from "@mui/material/Button";
+import Counter from "../components/Counter";
 import Image from "next/image";
+import { useState } from "react";
 
 const CssTextField = styled(TextField)({
   "& .MuiInputBase-root": {
@@ -32,14 +34,29 @@ const CssTextField = styled(TextField)({
   "& .MuiFilledInput-root": {
     justifyContent: "center",
     alignItems: "center",
+    width: "56px",
+    height: "56px",
   },
 });
-const ColorButton = styled(Button)({
-  backgroundColor: "red",
-});
-const token = "5873";
+
 export default function SignUp({ setShowSignIn }) {
   const theme = useTheme();
+  const [token, setToken] = useState([]);
+  const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "", "0", "11"];
+
+  // const [age, setAge] = useState(0);
+  // const [name, setName] = useState("")
+
+  // React.useEffect(() => {
+  //   if (age) {
+  //       // setName(name + "A")
+  //       setName(prev => prev+"A")
+  //     }
+  // }, [age])
+
+  // a = [1, 2, 3]
+
+  // b = [...a, 4]
 
   return (
     <div className="container flex flex-col	justify-end items-center h-screen">
@@ -56,8 +73,12 @@ export default function SignUp({ setShowSignIn }) {
           <Typography>
             Enter the code we sent +989128452301.
             <br />
-            <Link href="#" className={styles.linkColor}>
-              Edit phone number
+            <Link
+              href="#"
+              underline="none"
+              sx={{ color: theme.palette.secondary.main }}
+            >
+              Edit phone number &nbsp;
             </Link>
             if its wrong.
           </Typography>
@@ -67,81 +88,68 @@ export default function SignUp({ setShowSignIn }) {
                 key={index}
                 id="filled-basic"
                 variant="filled"
-                type="number"
+                type="text"
                 InputProps={{
                   disableUnderline: true,
                 }}
-                value={token[index]}
+                value={token[index] || ""}
               />
             ))}
           </Stack>
-          <Typography
-            className="text-center"
-            sx={{ color: theme.palette.disabled.main }}
+          <Counter />
+          <Button
+            variant="contained"
+            sx={{
+              borderRadius: "12px",
+              width: "296px",
+              height: "40px",
+              margin: "auto",
+            }}
           >
-            Remaining time: 1:15
-          </Typography>
-          <Button variant="contained">Next</Button>
-          <div className="container flex w-52 justify-center items-center m-auto">
-            <div className="grid-container grid grid-cols-3 text-center gap-y-4 gap-x-16">
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                1
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                2
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                3
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                4
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                5
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                6
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                7
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                8
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                9
-              </Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              ></Typography>
-              <Typography
-                sx={{ color: theme.palette.disabled.dark, fontSize: "34px" }}
-              >
-                0
-              </Typography>
-              <div>
-                <Image src="/clear.png" alt="..." width={20.82} height={18} hidden={false}/>
-              </div>
-            </div>
-          </div>
+            Next
+          </Button>
+          <Box
+            className="grid grid-cols-3 text-center justify-center items-center m-auto gap-y-4"
+            sx={{ columnGap: "76px" }}
+          >
+            {numbers.map((number, index) => {
+              if (number !== "11") {
+                return (
+                  <Link
+                    href="#"
+                    underline="none"
+                    key={index}
+                    color="disabled.dark"
+                    sx={{
+                      fontSize: "34px",
+                      width: "20px",
+                      height: "40px",
+                    }}
+                    onClick={() => {
+                      setToken((prev) => [...prev, number]);
+                    }}
+                  >
+                    {number}
+                  </Link>
+                );
+              } else {
+                return (
+                  <Link href="#" className="flex justify-center" key={index}>
+                    <Image
+                      src="/clear.png"
+                      alt="..."
+                      width={20.82}
+                      height={18}
+                      className="self-center"
+                      onClick={() => {
+                        setToken((prev) => prev.slice(0, -1));
+                      }}
+                    />
+                  </Link>
+                );
+              }
+            })}
+          </Box>
         </form>
       </div>
     </div>

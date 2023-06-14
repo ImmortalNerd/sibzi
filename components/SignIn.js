@@ -61,7 +61,7 @@ export default function SignIn({ setShowSignIn }) {
       >
         Forgot Password?
       </Link>
-      <Button className="signup-btn" variant="contained" color="primary">
+      <Button variant="contained" color="primary" sx={{ borderRadius: "12px" }}>
         Sign In
       </Button>
       <p className="text-center">Or</p>
@@ -77,7 +77,7 @@ export default function SignIn({ setShowSignIn }) {
         </Link>
       </Stack>
       <p className="text-center mt-auto">
-        Dont have an account?
+        Dont have an account? &nbsp;
         <Link
           href="#"
           underline="none"
