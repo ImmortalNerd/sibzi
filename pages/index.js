@@ -5,11 +5,11 @@ import SignIn from "@/components/SignIn";
 import { useState, useEffect } from "react";
 import Slide from "@mui/material/Slide";
 
-// if SignIn POST http://localhost:3000/auth/login
-// if SignUp POST http://localhost:3000/auth/register
+// if SignIn POST http://localhost:5500/auth/login
+// if SignUp POST http://localhost:5500/auth/register
 
-// if  GET http://localhost:3000/auth/token
-// if  POST http://localhost:3000/auth/verification
+// if token GET http://localhost:5500/auth/token  userId
+// if checkToken  POST http://localhost:5500/auth/verification
 
 export default function Home() {
   const [showSignIn, setShowSignIn] = useState(false);

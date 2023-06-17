@@ -9,6 +9,8 @@ import Button, { ButtonProps } from "@mui/material/Button";
 import Counter from "../components/Counter";
 import Image from "next/image";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const CssTextField = styled(TextField)({
   "& .MuiInputBase-root": {
@@ -40,9 +42,40 @@ const CssTextField = styled(TextField)({
 });
 
 export default function SignUp({ setShowSignIn }) {
-  const theme = useTheme();
   const [token, setToken] = useState([]);
   const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "", "0", "11"];
+  const router = useRouter();
+  const { userId, phone } = router.query;
+
+  useEffect(() => {
+    if (!userId) return;
+    const getToken = async () => {
+      const response = await fetch(
+        `http://localhost:5500/auth/token?userId=${userId}`
+      );
+      const data = await response.json();
+      setToken(String(data.token));
+    };
+    getToken();
+  }, [userId]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:5500/auth/verification", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token, userId }),
+      });
+      const data = await response.json();
+      if (data) router.push("/dashboard");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   // const [age, setAge] = useState(0);
   // const [name, setName] = useState("")
@@ -61,7 +94,10 @@ export default function SignUp({ setShowSignIn }) {
   return (
     <div className="container flex flex-col	justify-end items-center h-screen">
       <div className="w-full md:w-fit mb-0">
-        <form className={`${styles.signup} p-8 mb-0 gap-4`}>
+        <form
+          onSubmit={handleSubmit}
+          className={`${styles.signup} p-8 mb-0 gap-4`}
+        >
           <Typography
             gutterBottom
             variant="h5"
@@ -73,11 +109,7 @@ export default function SignUp({ setShowSignIn }) {
           <Typography>
             Enter the code we sent +989128452301.
             <br />
-            <Link
-              href="#"
-              underline="none"
-              sx={{ color: theme.palette.secondary.main }}
-            >
+            <Link href="#" underline="none" color="secondary.main">
               Edit phone number &nbsp;
             </Link>
             if its wrong.
@@ -105,6 +137,7 @@ export default function SignUp({ setShowSignIn }) {
               height: "40px",
               margin: "auto",
             }}
+            type="submit"
           >
             Next
           </Button>
